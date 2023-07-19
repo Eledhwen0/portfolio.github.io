@@ -1,0 +1,1369 @@
+/* -------------------------  Reset  ----------------------------- */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img{
+  display: block;
+}
+html{
+  scroll-behavior: smooth;
+}
+
+/* main{
+  scroll-snap-type: y proximity;
+  overflow-y: scroll;
+  height: 100vh;
+} */
+
+button{
+  border: 0px;
+}
+/* -------------------------  Utility Classes  ----------------------------- */
+
+
+.container{
+  /* flex-grow: 1; */
+  width:85%;
+  margin: auto;
+}
+
+nowrap{
+  white-space: nowrap;
+}
+
+section{
+  min-height: 100vh;
+  width: 100%;
+  padding: 2rem;
+
+  display: flex;
+  flex-flow: column nowrap;
+  overflow: hidden;
+
+  scroll-snap-align: start;
+}
+
+
+/* -------------------------  Variables  ----------------------------- */
+
+:root{
+
+  
+  --RED: #9B0723;
+  --BLACK : black;
+  --GREY: rgb(192, 192, 192);
+  --LIGHT-BLACK : #333;
+  --BORDER-RADIUS:10px;
+  
+  /* theme */
+  --LIGHT-BG: white;
+  --DARK-BG : var(--BLACK);
+
+   /*------ FONT ----- */
+   --FF-Title : 'Montserrat', sans-serif;
+   --FF-PARA : 'Hind', sans-serif;
+   
+   /* font-size */
+   --FS-XXL: 7rem;
+   --FS-XL: 3.5rem;
+   --FS-L:2.25rem;
+   --FS-M:1.5rem;
+   --FS-S:1.1rem;
+   --FS-XS:0.95rem;
+   
+   /* font-color */
+   --FC : var(--LIGHT-BLACK);
+   --FC-RED: var(--RED);
+   --FC-PARA : #444;
+   --FS-PARA: var(--FS-S);
+   
+   /* font-spacing */
+   --F-MT : 1.5rem;
+   --F-MB : 1.5rem;
+
+   
+   /*------ COLOR ----- */
+   --BALL-COLOR: var(--RED);
+   --BALL-GRADIENT: radial-gradient(rgb(235, 235, 235) 0%, rgb(179, 10, 41) 15%,  rgb(134, 20, 41) 65%, rgb(179, 10, 41) 85%);
+   --RED-LINEAR-GRADIENT: linear-gradient(to right,rgb(179, 10, 41) 20% , var(--RED) 60%, rgb(134, 20, 41) 85% );
+   --BALL-POSITION:-25px -10px;
+   --RED-PROGRESS-COLOR: linear-gradient(to right,rgb(179, 10, 41) 20% , var(--RED) 60%, rgb(182, 42, 68) 85% );
+
+   /* para */
+   --PARA-MARGIN : 1.5rem 0;
+
+    /* --- SKILLS SECTION ---*/
+    --SKILL-CIRCLE-WIDTH: 50px;
+    --SKILL-CIRCLE-HEIGHT:50px;
+
+   /* skills-color */
+   --SKILLS-LIGHT-BG: var(--BLACK);
+   /* --SKILLS-LIGHT-BG: #a5a5a5; */
+   --SKILLS-DARK-BG: white;
+
+   --SKILLS-LIGHT-BORDER: 10px solid var(--SKILLS-LIGHT-BG);
+   --SKILLS-DARK-BORDER: 10px solid var(--SKILLS-DARK-BG);
+   --PROGRESS-LIGHT-BORDER: 1px solid var(--SKILLS-LIGHT-BG);
+   --PROGRESS-DARK-BORDER: 1px solid var(--SKILLS-LIGHT-BG);
+
+   --CARD-LIGHT-BG : var(--SKILLS-DARK-BG);
+   --CARD-DARK-BG : var(--SKILLS-LIGHT-BG);
+
+   --CARD-LIGHT-PERCENTAGE-COLOR : var(--RED); /* special */
+   --CARD-DARK-PERCENTAGE-COLOR : var(--SKILLS-DARK-BG);
+
+   /* sidetitle */
+   --TITLE-MB : 4rem;
+
+
+
+   /*------ Button ----- */
+   --BTN-PADDING : 5px 30px;
+   --BTN-FS : var(--FS-XS);
+   --BTN-LIGHT-BG:white;
+   --BTN-LIGHT-FC:var(--FC-RED);
+   --BTN-DARK-BG:var(--RED);
+   --BTN-DARK-FC:var(white);
+   --BTN-BORDER: 2px solid var(--BLACK);
+   --BTN-BORDER-RAD: 0px;
+   --BTN-FW : 500;
+   
+   /*------ Swiper ----- */
+   --swiper-theme-color : var(--RED);
+  --swiper-pagination-color: var(--swiper-theme-color);
+ 
+}
+
+/* Font setting -> convert js to title case */
+h1,h2{ 
+  margin-top: var(--F-MT);
+  margin-bottom: var(--F-MB);
+  font-family: var(--FF-Title);
+  text-transform: capitalize;
+}
+p,button{
+  font-family: var(--FF-PARA);
+  color: var(--FC-PARA);
+}
+
+/* -------------------------  Genral Classes  ----------------------------- */
+
+
+.big-title{
+  font-size: var(--FS-XXL);
+}
+.title{
+  font-size: var(--FS-XL);
+  color: var(--FC);
+}
+.title-light{
+  font-size: var(--FS-L);
+  font-weight: 300;
+}
+.title-small{
+  font-size: var(--FS-S);
+  font-weight: 600;
+}
+.red-text{
+  color: var(--FC-RED);
+}
+
+p{
+  margin:var(--PARA-MARGIN);
+  padding: 0;
+  font-size: var(--FS-PARA);
+  
+}
+
+/* -------------------------  Hero   ----------------------------- */
+
+
+/* hero layout */
+.hero-content{
+  margin-top: 2.2rem;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: start;
+
+  position: relative;
+
+  /* // animation */
+  transform-style: preserve-3d;
+}
+.glass-blur{
+  z-index: -50;
+  border-radius: var(--BORDER-RADIUS);
+  position: absolute;
+  left: 5%;
+  width: 75vw;
+  height: 77vh;
+  background-color: rgba(231, 231, 231, .10);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(10px);
+  
+}
+
+.hero-content h1.title{
+  align-self: flex-end;
+  margin-top: 3.5rem;
+}
+/* .hero-content h1.big-title{
+  align-self: center;
+} */
+.hero-content a{
+  margin-top: 7rem;
+  align-self: center;
+}
+
+/* hero ball-Property*/
+
+.ball{
+  position: absolute;
+
+  z-index: -100;
+  border-radius: 50%;
+
+  background : var(--BALL-GRADIENT);
+  background : -webkit-var(--BALL-GRADIENT);
+  background-position: var(--BALL-POSITION);
+
+  box-shadow: -4px 7px 7px -2px rgb(0, 0, 0,40%);
+  box-shadow: 7px 4px 5px -5px rgba(0, 0, 0, 0.493);
+  filter: blur(0px);
+ 
+  transform:translate3d(0%,0%,0);
+  transition:transform 2s cubic-bezier(.02,1.23,.79,1.08);
+}
+
+.ball:first-child{
+  top: 55%;
+  left: -20%;
+  height: 210px;
+  width: 210px;
+}
+.ball:nth-child(2){
+  top: 5%;
+  left:20%;
+  height: 30px;
+  width: 30px;
+}
+.ball:nth-child(3){
+  top: 5%;
+  right: -2%;
+  height: 90px;
+  width: 90px;
+}
+.ball:last-child{
+  bottom: 0%;
+  right: -15%;
+  height: 160px;
+  width: 160px;
+  z-index: 60;
+}
+
+
+/* -------------------------  Button Styles   ----------------------------- */
+.red-button{
+    position: relative;
+    border: 0;
+    background: var(--RED);
+    color: white;
+    font-weight: var(--BTN-FW);
+    font-size: var(--BTN-FS);
+    padding: var(--BTN-PADDING);
+    border-radius: var(--BTN-BORDER-RAD);
+    box-shadow: 2px 3px 5px -1px rgba(0, 0, 0, 0.4);
+    z-index: 61;
+  }
+ 
+  button{
+    position: relative;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    background: var(--BTN-LIGHT-BG);
+    font-size: var(--BTN-FS);
+    font-weight: var(--BTN-FW);
+    padding: var(--BTN-PADDING);
+    border: var(--BTN-BORDER);
+    border-radius: var(--BTN-BORDER-RAD);
+    overflow: hidden;
+    color:var(--BTN-LIGHT-FC);
+    transition: all 0.5s ease;
+    box-shadow: 2px 3px 5px -1px rgba(0, 0, 0, 0.264);
+}
+button span{
+  position: relative;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+button::before{
+  content: " ";
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-50%,-50%) ;
+  transform: scale(0);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--BLACK);
+  transition: all 0.5s ease-in-out;
+}
+button:hover::before{
+  transform: scale(25);
+  border-radius: 50%;
+}
+button:hover{
+  color: var(--LIGHT-BG);
+  transform: scaleX(110%);
+  box-shadow: 2px 4px 4px -1px rgba(0, 0, 0, 0.25);
+}
+
+
+
+/* -------------------------  NAVBAR Styles   ----------------------------- */
+.navbar{
+  display: block;
+  margin: 0;
+  width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    /* flex-direction: row;  this is default*/
+    justify-content: space-between;
+    position: fixed;
+    top: 0%;
+    left: 0;
+    background-color: rgba(214, 214, 214, 0.448);
+    backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  z-index: 1000;
+    
+  }
+  .navbar img{
+    width: 50px;
+    height: auto;
+    padding: 5px;
+    background-color: white;
+    border-radius: 50%;
+  }
+.nav-items{
+  display: inline-flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* text-transform: uppercase; */
+  }
+  .nav-item{
+  position:relative;
+  margin:0px 20px;
+  padding: 5px 20px;
+  font-size: var(--FS-XS);
+}
+a{
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+.nav-item::after{
+  content: "";
+  position: absolute;
+  background-color: var(--RED);
+  height: 3px;
+  width: 0%;
+  left: 0;
+  bottom: -5px;
+  transition: all .3s ease-in-out;
+}
+.nav-item:hover::after{
+  width: 100%;
+}
+
+/* ----------  Hero-NAV ----------------- */
+
+.hamburger{
+  display: none;
+}
+.navbar .nav-items .active{
+  color: var(--RED);
+}
+
+@media screen and (max-width:1320px) {
+  
+  
+}
+@media screen and (max-width:1100px) {
+
+  
+}
+@media only screen and (max-width:900px) {
+  .hamburger{
+    display: block;
+    cursor: pointer;
+  }  
+  .hamburger .line{
+    width: 30px;
+    height: 3px;
+    background-color: rgb(0, 0, 0);
+    margin: 6px 0;
+  }
+  .nav-bar{
+    position: relative;
+    transition: .5s;
+  }
+  .nav-items{
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 0;
+    transition: 0.5s;
+
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: white;
+    opacity: 0;
+    overflow: hidden;
+  }
+
+  .nav-items.active{
+    height: 95vh;
+    opacity: 1;
+  }
+}
+
+
+/* -------------------------  SIDE TITLE Styles   ----------------------------- */
+
+.page-title{
+    padding: 0;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1.5rem;
+}
+.page-title-border{
+  display: inline-block;
+    background-color: var(--RED);
+    height: 2px;
+    width: 22rem;
+    margin-left: -3.5rem;
+    margin-bottom: var(--TITLE-MB);
+  }
+
+  
+  /* -------------------------   SKILLS   ----------------------------- */
+.skills-wrap{
+  margin-top: var(--TITLE-MB);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.skill-card-wrap{
+  padding: 2.5vw 3.5vw;
+  display: flex;
+  flex-flow: column nowrap;
+
+}
+.skill-card{
+  margin-top: 5px;
+  width: 30vw;
+  display: grid;
+  grid-template-columns: 2fr 4fr 1fr;
+  grid-template-rows: .1fr .1fr;
+  /* text-align: center; */
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.skill-card:nth-child(odd){
+  margin-left: -15px;
+}
+.skill-card:nth-child(even){
+  margin-left: 15px;
+}
+
+.skill-img-holder{
+  margin: auto;
+  margin-right:20px;
+  width: var(--SKILL-CIRCLE-WIDTH);
+  height: var(--SKILL-CIRCLE-HEIGHT);
+  background-color: #333;
+  border-radius: 50%;
+
+  grid-row: span 2;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-img-holder img{
+  width: 40px;
+  height: auto;
+  background-size: cover;
+}
+.skill-card h2{
+  font-size: var(--FS-XS);
+  grid-column: span 1;
+}
+.skill-progress-bar{
+  height: 7.2px;
+  border: 1px solid white;
+  border-style: inset 1px solid white ;
+}
+.skill-progress-percentage{
+  grid-row: span 2;
+}
+
+/* progress bar */
+.skill-progression{
+  height: 100%;
+  width: 0%;
+  background-color: var(--RED);
+  background: var(--RED-PROGRESS-COLOR);
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  font-size: var(--FS-XS);
+
+  transition: width 1s ease;
+}
+
+/* .skill-circle-bar{
+  position: relative;
+  padding: 5px;
+  display: grid;
+  place-content: center;
+}
+.circle-bar-outer{
+  width: var(--SKILL-CIRCLE-WIDTH);
+  height: var(--SKILL-CIRCLE-HEIGHT);
+  border-radius: 50%;
+
+  background-color: var(--RED-LINEAR-GRADIENT);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 4px 4px 7px -2px rgba(0, 0, 0, 0.15), 4px 4px 7px -2px rgba(255, 255, 255, 0.7);
+
+  
+}
+.circle-bar-inner{
+  width: 85%;
+  height: 85%;
+  border-radius: 50%;
+  
+  display: grid;
+  place-content: center;
+  background-color: var(--CARD-LIGHT-BG);
+
+  box-shadow: inset 4px 4px 7px -1px rgba(0, 0, 0, 0.2),
+              inset 4px 4px 7px -2px rgba(255, 255, 255, 0.7),
+              -0.5px 0.5px 0px  rgba(255, 255, 255, 1),
+              0.5px 0.5px 0px  rgba(0, 0, 0, 0.15),
+              0.5px 5px 7px  rgba(0, 0, 0, 0.05)
+              ;
+} */
+
+/* different colour cards */
+.light-theme{
+  border: var(--SKILLS-LIGHT-BORDER);
+}
+.dark-theme{
+  border: var(--SKILLS-DARK-BORDER);
+}
+/* // for themed cards */
+
+/* light */
+.light-theme .skill-card{
+  background-color: var(--CARD-LIGHT-BG);
+}
+.light-theme .skill-progress-bar{
+  border-color: var(--CARD-DARK-BG);
+}
+.light-theme .skill-progress-percentage{
+  color: var(--CARD-LIGHT-PERCENTAGE-COLOR);
+}
+.light-theme .skill-img-holder{
+  background-color: var(--CARD-DARK-BG);
+}
+/* dark */
+.dark-theme .skill-card{
+  color: var(--CARD-LIGHT-BG);
+  background-color: var(--CARD-DARK-BG);
+}
+.dark-theme .skill-progress-bar{
+  border-color: var(--CARD-LIGHT-BG);
+}
+.dark-theme .skill-progress-percentage{
+  color: var(--CARD-DARK-PERCENTAGE-COLOR);
+}
+.dark-theme .skill-img-holder{
+  background-color: var(--CARD-LIGHT-BG);
+}
+
+
+/* -------------------------   FAQ   ----------------------------- */
+
+.faq-wrap{
+  margin: 10vh auto;
+  margin-bottom: 0;
+  width: 50%;
+  min-height: fit-content;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.faq-card-wrap{
+  width: 100%;
+  margin-bottom: var(--F-MB);
+  padding: 25px;
+  border: 1px solid var(--BLACK);
+  box-shadow: 0px 2px 10px -2px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.faq-card-wrap:hover{
+  color: var(--RED);
+}
+
+.faq-label-box{
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: var(--FS-S);
+  font-family: var(--FF-PARA);
+}
+svg{
+  height: var(--FS-S);
+  transform: rotate(90deg);
+  transition: all 0.5s ease;
+}
+
+.faq-content-box{
+  height: 0px;
+  opacity: 0;
+  margin: 0;
+  overflow: hidden;
+  transition: all 0.5s ease-out;
+  /* overflow-y: auto; */
+}
+.faq-content-box p{
+  padding: 0;
+  margin: 0;
+  font-size: var(--FS-S);
+}
+
+.faq-content-box.show{
+  opacity: 1;
+  height: auto;
+  transition: all 0.5s ease-in;
+  margin: var(--PARA-MARGIN);
+  padding-left: 10px;
+}
+
+
+
+/* --------------------------------------- PROJECTS -------------------------------- */
+
+.page-body-flex{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container.card-wrap{
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.project-card{
+    margin: 0 .6rem;
+    position: relative;
+    width: 350px;
+    height: auto;
+    box-shadow: 4px 4px 10px -1px rgb(0, 0, 0,0.30);
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+  }
+
+  .project-card .project-img{
+    transform: scale(1.2);
+    transition: all 0.4s ease-in-out;
+  }
+  .project-card:hover .project-img{
+    transform: scale(1);
+  }
+  .project-card:hover{
+    overflow: visible;
+  }
+  .project-card:hover .project-img-detail{
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+
+.responsive {
+  width: 100%;
+  height: auto;
+}
+.project-img-detail{
+  position: absolute;
+  top: 55%;
+  left: 0%;
+  width: 100%;
+  height: 70%;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2px 2px 4px -1px rgb(0, 0, 0,0.30);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  z-index: 10;
+  opacity: 0;
+  transform: scale(1.1);
+  transition: all .5s ease-in-out 0.1s;
+}
+.project-img-detail h1{
+  margin: 0;
+  padding: 0;
+  margin-top: 0.7rem;
+  font-size: var(--FS-S);
+}
+.project-img-detail a{
+  align-self: flex-end;
+  padding: 4px 10px;
+  font-size: var(--FS-XS);
+}
+
+
+
+/* -----------------------------------------  Testimonial  ------------------------------------------ */
+
+  .page-body-grid {
+    display: grid;
+    /* grid-template-columns: auto minmax(400px,600px); */
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: auto 1fr;
+    width: 100%;
+    height: 100%;
+  }
+  .page-body-grid > .page-title {
+    grid-column: span 1;
+  }
+  .vertical-image {
+    object-fit: contain;
+    height: 90vh;
+    width: auto;
+    grid-column: span 1;
+    grid-row: span 4;
+  }
+
+  /* .bg-responsive{
+    min-width: 100%;
+  } */
+
+  /* --------------- new testi ---------------------- */
+
+  .testimonial .image{
+    width: 60px;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #000;
+  }
+  .testimonial{
+    flex-grow: 1;
+    position: relative;
+    width: 80%;
+    height: 100%;
+    margin: auto auto;
+    overflow: hidden;
+  }
+  .testi-content{
+    height: 100%;
+    width:100%;
+    margin: 0 auto;
+  }
+  
+  .testi-slide{
+    margin: auto;
+    width: 85%;
+    height: 90%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    padding: 50px;
+
+    border: 1px solid var(--BLACK);
+    border-bottom: 50px solid var(--BLACK);
+  }
+ 
+  .testi-slide .quote-icon{
+    align-self: flex-start;
+    font-size: var(--FS-L);
+    color: var(--RED);
+  }
+  .testi-details h1{
+    font-size: var(--FS-S);
+    margin-top: .2rem;
+  }
+  .testi-details h1.red-text{
+    font-size: var(--FS-XS);
+  }
+
+  .small-h1 {
+    font-size: var(--FS-S);
+  }
+
+
+  /* About Section */
+
+  .para-centered{
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  #right-red-button{
+    display: inline-block;
+    margin-left:auto;
+    margin-right: 1rem;
+  }
+
+
+  .grey-text{
+    color: #6A6A6A;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .min-margin-top{
+    margin-top: 1rem;
+  }
+
+  .port-container-flex{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .portfolio-card-wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+  }
+
+  .portfolio-flex-alter-right{
+    text-align: left;
+    align-self: flex-end;
+    justify-content: end;
+    align-items: end;
+  }
+  .portfolio-flex-alter-left{
+    text-align: right;
+    align-self: flex-start;
+    justify-content: end;
+    align-items: start;
+  }
+  /* .portfolio-flex-alter-left,.portfolio-flex-alter-left h1{
+    display: inline-block;
+  } */
+
+ 
+  
+  .port-image-responsive{
+    max-width: 650px;
+  }
+
+
+
+
+
+
+  /* ------------------------------- ANIMATIONS ------------------------------ */
+
+
+  /* section-title */
+  .para{
+    opacity: 0;
+    transform: translateY(30%);
+    transition: all .5s ease-in-out ;
+  }
+
+  /* --Skill */
+  .skill-card{
+    transform: translateY(30%);
+    opacity: 0;
+    transition: all 1s ease-in-out;
+  }
+
+
+  .on-scroll-view-bottom.on-scroll-view-bottom{
+    opacity: 1;
+    transform:translateY(0);
+  }
+ 
+
+  /* ---------------------------- GSAP ANIMATIONS ------------------------------- */
+
+  .intro{
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 60;
+
+    display: grid;
+    place-content: center;
+    border-bottom: 10vh solid var(--GREY);
+  }
+
+  .slider{
+    background-color:var(--RED);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 61;
+
+
+    transform: translateY(100%);
+  }
+
+  .hide{
+    background-color: white;
+    overflow: hidden;
+  }
+
+  .hide span{
+    display: inline-block;
+    transform: translateY(100%);
+  }
+
+
+
+
+  /* ------------------------------------------ media quiery ----------------------------------*/
+
+  @media screen and (max-width:1100px) {
+    
+    :root{
+
+       /* font-size */
+       --FS-XXL: 6.5rem;
+       --FS-XL: 3rem;
+       --FS-L:2rem;
+       --FS-M:1.4rem;
+       --FS-S:1rem;
+       --FS-XS:0.9rem;
+       
+       /* font-color */
+       --FS-PARA: var(--FS-S);
+       
+       /* font-spacing */
+       --F-MT : 1.4rem;
+       --F-MB : 1.4rem;
+    
+       
+       /*------ COLOR ----- */
+       --BALL-POSITION:-25px -10px;
+    
+       /* para */
+       --PARA-MARGIN : 1.4rem 0;
+    
+        /* --- SKILLS SECTION ---*/
+        --SKILL-CIRCLE-WIDTH: 50px;
+        --SKILL-CIRCLE-HEIGHT:50px;
+    
+    
+       /* sidetitle */
+       --TITLE-MB : 3.5rem;
+    
+    
+    
+       /*------ Button ----- */
+       --BTN-PADDING : 5px 30px;
+       --BTN-FS : var(--FS-XS);
+       --BTN-BORDER: 2px solid var(--BLACK);
+       --BTN-BORDER-RAD: 0px;
+       --BTN-FW : 500;
+    }
+
+    section{
+      padding: 1.6rem;
+    }
+    .skill-card{
+      width:27vw;
+    }
+    .project-card{
+      width: 320px;
+    }
+    
+    .project-img-detail a{
+      padding: 3.5px 8.4px;
+      font-size: var(--FS-XS);
+    }
+
+    .project-img-detail h1{
+      margin-top: 0.6rem;
+      font-size: var(--FS-S);
+    }
+    .project-img-detail{
+      padding: 16px;
+    }
+    
+  }
+  @media screen and (max-width:991px) {
+    :root{
+
+      /* font-size */
+      --FS-XXL: 5.2rem;
+      --FS-XL: 2.7rem;
+      --FS-L:1.9rem;
+      --FS-M:1.3rem;
+      --FS-S:1rem;
+      --FS-XS:0.85rem;
+      
+      /* font-color */
+      --FS-PARA: var(--FS-S);
+      
+      /* font-spacing */
+      --F-MT : 1.3rem;
+      --F-MB : 1.3rem;
+   
+      
+      /*------ COLOR ----- */
+      --BALL-POSITION:-25px -10px;
+   
+      /* para */
+      --PARA-MARGIN : 1.4rem 0;
+   
+       /* --- SKILLS SECTION ---*/
+       --SKILL-CIRCLE-WIDTH: 40px;
+       --SKILL-CIRCLE-HEIGHT:40px;
+   
+   
+      /* sidetitle */
+      --TITLE-MB : 3rem;
+   
+   
+   
+      /*------ Button ----- */
+      --BTN-PADDING : 4px 25px;
+      --BTN-FS : var(--FS-XS);
+      --BTN-BORDER-RAD: 0px;
+   }
+
+   section{
+     padding: 1.4rem;
+   }
+   .skill-card{
+     width:25vw;
+   }
+   .skill-card-wrap{
+    padding: 2vw 2vw;
+   }
+   .skill-img-holder{
+    margin-right: 12px;
+   }
+   .project-card{
+     width: 300px;
+   }
+   
+   .project-img-detail a{
+     padding: 3.5px 8.4px;
+   }
+
+   .project-img-detail h1{
+     margin-top: 0.6rem;
+   }
+   .project-img-detail{
+     padding: 12px;
+   }
+
+   .page-body-grid {
+    display: flex;
+    flex-direction: column;
+  }
+  .vertical-image {
+    height: 80vw;
+    transform: rotate(90deg);
+  }
+  
+  }
+  @media screen and (max-width:767px) {
+    :root{
+
+      /* font-size */
+      --FS-XXL: 4.2rem;
+      --FS-XL: 2.3rem;
+      --FS-L:1.7rem;
+      --FS-M:1.2rem;
+      --FS-S:1rem;
+      --FS-XS:0.79rem;
+      
+    
+      /* font-spacing */
+      --F-MT : .7rem;
+      --F-MB : .7rem;
+   
+      
+      /*------ COLOR ----- */
+      --BALL-POSITION:-25px -10px;
+   
+      /* para */
+      --PARA-MARGIN : 1rem 0;
+   
+       /* --- SKILLS SECTION ---*/
+       --SKILL-CIRCLE-WIDTH: 40px;
+       --SKILL-CIRCLE-HEIGHT:40px;
+   
+   
+      /* sidetitle */
+      --TITLE-MB : 2rem;
+   
+   
+   
+      /*------ Button ----- */
+      --BTN-PADDING : 3px 20px;
+      --BTN-FS : var(--FS-XS);
+   }
+
+   section{
+     padding: 1rem;
+   }
+   .hero-content{
+    margin-top: 1.5rem;
+   }
+   .skill-progress-bar{
+    height: 5.2px;
+  }
+  .skills-wrap{
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .skill-card{
+    width: 45vw;
+  }
+   .project-card{
+    margin-top: 2vh;
+     width: 50%;
+   }
+   .container.card-wrap{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  
+   
+   .project-img-detail a{
+     padding: 3.5px 8.4px;
+   }
+
+   .project-img-detail h1{
+     margin-top: 0.6rem;
+   }
+   .project-img-detail{
+     padding: 12px;
+   }
+
+
+  
+  }
+  @media screen and (max-width:720px) {
+    :root{
+
+      /* font-size */
+      --FS-XXL: 3.5rem;
+      --FS-XL: 2.1rem;
+      --FS-L:1.5rem;
+      --FS-M:1.1rem;
+      --FS-S:1rem;
+      --FS-XS:0.7rem;
+      
+    
+      /* font-spacing */
+      --F-MT : .6rem;
+      --F-MB : .6rem;
+   
+      
+      /*------ COLOR ----- */
+      --BALL-POSITION:-25px -10px;
+   
+      /* para */
+      --PARA-MARGIN : .9rem 0;
+   
+       /* --- SKILLS SECTION ---*/
+       --SKILL-CIRCLE-WIDTH: 40px;
+       --SKILL-CIRCLE-HEIGHT:40px;
+   
+   
+      /* sidetitle */
+      --TITLE-MB : 1.5rem;
+   
+   
+   
+      /*------ Button ----- */
+      --BTN-PADDING : 3px 18px;
+      --BTN-FS : var(--FS-XS);
+   }
+
+   section{
+     padding: 20px;
+   }
+   .hero-content{
+    margin-top: 20vh;
+    justify-content: space-around;
+   }
+   .hero-content{
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+   }
+   .hero-content h1.title,.big-title{
+    align-self: center;
+   }
+   .hero-content h2.title-light{
+    align-self: flex-start;
+   }
+   .big-title{
+    text-align: center;
+    line-height: 1.5;
+   }
+   .glass-blur{
+    top : -5%;
+   }
+   .ball:first-child{
+    height: 110px;
+    width: 110px;
+  }
+  .ball:nth-child(2){
+    height: 15px;
+    width: 15px;
+  }
+  .ball:nth-child(3){
+    height: 45px;
+    width: 45px;
+  }
+  .ball:last-child{
+    height: 90px;
+    width: 90px;
+  }
+  .hero-content a{
+    margin-top: 3rem;
+  }
+  /* skills */
+  .skill-card{
+    width: 60vw;
+  }
+  /* projects hover */
+  .project-card {
+    width :70%;
+    margin-bottom: 2rem;
+  }
+  /* Faq */
+  .faq-wrap{
+    width: 70%;
+  }    
+  }
+  @media screen and (max-width:478px) {
+
+    :root{
+
+      /* font-size */
+      --FS-XXL: 3.7rem;
+      --FS-XL: 1.9rem;
+      --FS-L:1.5rem;
+      --FS-M:1.1rem;
+      --FS-S:.9rem;
+      --FS-XS:0.7rem;
+      
+    
+      /* font-spacing */
+      --F-MT : .55rem;
+      --F-MB : .55rem;
+   
+      
+      /*------ COLOR ----- */
+      --BALL-POSITION:-25px -10px;
+   
+      /* para */
+      --PARA-MARGIN : .7rem 0;
+   
+       /* --- SKILLS SECTION ---*/
+       --SKILL-CIRCLE-WIDTH: 40px;
+       --SKILL-CIRCLE-HEIGHT:40px;
+   
+   
+      /* sidetitle */
+      --TITLE-MB : 1.5rem;
+   
+   
+   
+      /*------ Button ----- */
+      --BTN-PADDING : 3px 18px;
+      --BTN-FS : var(--FS-XS);
+   }
+    .hero-content{
+      justify-content: space-around;
+      align-items: center;
+      text-align: center;
+     }
+     .hero-content h1.title,.big-title{
+      align-self: center;
+     }
+     .big-title{
+      text-align: center;
+      line-height: 1.4;
+     }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
